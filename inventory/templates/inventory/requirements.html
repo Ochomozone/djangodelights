@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Recipe Requirements for {{ menuitem.name }}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th>Quantity</th>
+      <th>Unit</th> 
+    </tr>
+  </thead>
+  <tbody>
+    {% for requirement in requirements %}
+      <tr>
+        <td>{{ requirement.ingredient }}</td>
+        <td>{{ requirement.quantity }}</td>
+        <td>{{ requirement.ingredient.unit }}</td> 
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="3">No requirements found for {{ menuitem.name }}.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

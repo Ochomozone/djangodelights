@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}Django Delights{% endblock %}
+{% block content %}
+  <div>
+    <h2>Purchases</h2>
+    <table>
+      <thead>
+        <tr>
+            <th>Purchase</th>
+            <th>Time</th>
+            <th>Quantity</th>
+            <th>Price(KES)</th>
+            <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for purchase in object_list %}
+        <tr>
+          <td>{{ purchase.item.name }}</td>
+          <td>{{ purchase.timestamp }}</td>
+          <td>{{ purchase.quantity }}</td>
+          <td>{{ purchase.cost }}</td>
+          <td><a href="{% url 'delete_purchase' purchase.id %}" style="text-decoration: none; color: inherit;">❌</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">
+                Nothing to show
+            </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'addingredient' %}" style="display: inherit; text-align: center; border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">➕</a>
+  </div>
+{% endblock %}

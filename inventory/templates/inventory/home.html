@@ -1,0 +1,38 @@
+{% extends 'base.html' %}{% load static %}
+
+ {% block content %}
+<h1>This is a list of Ingredients in the inventory!</h1>
+
+<table>
+    <thead>
+  <tr>
+    <th>Ingredient</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Units</th>
+  </tr>
+</thead>
+{% for ingredient in ingredients %}
+  <tbody>
+    
+      <tr>
+        <td>{{ ingredient.name }}</td>
+        <td>{{ ingredient.quantity }}</td>
+        <td>{{ ingredient.price }}</td>
+        <td>{{ ingredient.unit }}</td>
+      </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No ingredients found.</td>
+        </tr>
+   
+    {% endfor %}
+  </tbody>
+</table>
+<p><a href="{% url 'addingredient' %}">Add an Ingredient</a></p>
+<p><a href="{% url 'addmenuitem' %}">Add an Menu Item</a></p>
+<p><a href="{% url 'addrequirement' %}">Add an Recipe Requirement</a></p>
+<p><a href="{% url 'addpurchase' %}">Add an Purchase</a></p>
+
+
+{% endblock %}

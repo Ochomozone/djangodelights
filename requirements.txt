@@ -1,0 +1,7 @@
+asgiref==3.6.0
+Babel==2.12.1
+Django==4.1.7
+django-case-insensitive-field==1.0.7
+py-moneyed==3.0
+sqlparse==0.4.3
+typing_extensions==4.5.0

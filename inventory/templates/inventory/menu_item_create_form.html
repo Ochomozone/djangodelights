@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<head>
+  <link rel="stylesheet" href="{% static 'inventory/style.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+  <h1>Add New Menu Item</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit"/>
+  </form>
+{% endblock %}

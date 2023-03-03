@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}Django Delights{% endblock %}
+{% block content %}
+  <div>
+    <h2>Sales</h2>
+    <table>
+      <thead>
+        <tr>
+            <th>Purchase</th>
+            <th>Time</th>
+            <th>Quantity</th>
+            <th>Price(KES)</th>
+            <th>Revenue(KES)</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for purchase in object_list %}
+        <tr>
+          <td>{{ purchase.item.name }}</td>
+          <td>{{ purchase.timestamp }}</td>
+          <td>{{ purchase.quantity }}</td>
+          <td>{{ purchase.cost }}</td>
+          <td>{{ purchase.revenue }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">
+                No sales yet
+            </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'home' %}" >➕Home</a>
+  </div>
+{% endblock %}
